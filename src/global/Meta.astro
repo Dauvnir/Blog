@@ -1,0 +1,51 @@
+---
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+<meta name="robots" content="index, follow" />
+<!-- ----------------------------------------------------------- -->
+<title>
+  Blog, Serwis blogowy, Programowanie, Frontend, Web dev
+</title>
+<meta
+  name="description"
+  content="Blog o programowaniu stworzony przez Patryka Polak używająć tech-stacku: astro, react, headless cms wordpress, html5, css3"
+/>
+<meta name="author" content="Patryk Polak pdawidpolak@gmail.com" />
+<!-- ----------------------------------------------------------- -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="canonical" href={canonicalURL} />
+<!-- ----------------------------------------------------------- -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Blog Patryka Polak",
+    "image": "",
+    "@id": "",
+    "url": "https://blog.patryk-polak.pl/",
+    "telephone": "887075912",
+    "priceRange": "",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul.Słowackiego 10",
+      "addressLocality": "Warszawa",
+      "postalCode": "00-231",
+      "addressCountry": "PL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 55,
+      "longitude": 23
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Friday", "Thursday", "Wednesday", "Tuesday", "Monday"],
+      "opens": "08:00",
+      "closes": "16:00"
+    },
+    "sameAs": "https://blog.patryk-polak.pl/"
+  }

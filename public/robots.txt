@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://blog.patryk-polak.pl/sitemap-index.xml
