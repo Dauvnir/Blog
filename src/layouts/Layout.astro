@@ -1,19 +1,20 @@
 ---
 import Meta from "../global/Meta.astro";
-
-
 import { APICall } from "../lib/api"
 
 
-const query = `query siteInfo {
-  generalSettings {
-    title
-    description
+const query = `query GetPages {
+  pages {
+    nodes {
+      title
+      slug
+    }
   }
 }`;
 
 const response = await APICall<any>(query);
-const info = response.generalSettings;
+const info = response.pages.nodes[0];
+console.log(info);
 ---
 <!doctype html>
 <html lang="pl">
@@ -22,7 +23,7 @@ const info = response.generalSettings;
 	</head>
 	<body>
 		<h2>{info.title}</h2>
-		<p>Opis:{info.description}</p>
+		<p>Opis:{info.slug}</p>
 	</body>
 </html>
 
