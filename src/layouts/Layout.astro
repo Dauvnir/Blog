@@ -1,5 +1,19 @@
 ---
 import Meta from "../global/Meta.astro";
+
+
+import { APICall } from "../lib/api"
+
+
+const query = `query siteInfo {
+  generalSettings {
+    title
+    description
+  }
+}`;
+
+const response = await APICall<any>(query);
+const info = response.generalSettings;
 ---
 <!doctype html>
 <html lang="pl">
@@ -7,11 +21,8 @@ import Meta from "../global/Meta.astro";
 		<Meta />
 	</head>
 	<body>
-		<header></header>
-		<main>
-			<slot />
-		</main>
-		<footer></footer>
+		<h2>{info.title}</h2>
+		<p>Opis:{info.description}</p>
 	</body>
 </html>
 

@@ -11,5 +11,10 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "astro": "^5.16.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3",
+    "prettier": "^3.7.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
