@@ -1,0 +1,69 @@
+<section id="hero_section">
+  <h1>
+    Welcome to my
+    <span id="hero_section_header"><strong>WEB</strong></span> dev blog
+  </h1>
+  <p>
+    This blog is my journey thorough web development. <br /> Look below for posts.
+  </p>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="64"
+    height="64"
+    viewBox="0 0 1024 1024"
+  >
+    <path
+      fill="hsl(342, 100%, 50%)"
+      d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496"
+    ></path>
+  </svg>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+  }
+
+  h1 {
+    display: block;
+    height: auto;
+    font-size: 64px;
+    font-weight: 700;
+  }
+  p {
+    margin-bottom: 6rem;
+  }
+  h1,
+  p {
+    text-align: center;
+  }
+  #hero_section_header {
+    font-family: "Dangrek", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 72px;
+    color: var(--secondary-color);
+  }
+
+  svg {
+    position: absolute;
+    bottom: 0;
+
+    animation: upDown 2s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @keyframes upDown {
+    0% {
+      transform: translateY(-2rem);
+    }
+    100% {
+      transform: translateY(0rem);
+    }
+  }
+</style>

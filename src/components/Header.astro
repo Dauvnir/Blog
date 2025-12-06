@@ -1,0 +1,51 @@
+---
+import SearchBar from "./SearchBar.astro";
+---
+
+<header>
+  <div id="logo">WEB DEV BLOG</div>
+  <SearchBar />
+  <nav>
+    <ul>
+      <li><a href="#href">home</a></li>
+      <li><a href="#href">posts</a></li>
+      <li><a href="#href">contact</a></li>
+      <li><a href="#href">smth?</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    width: 100%;
+    height: 3rem;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+
+    overflow: hidden;
+  }
+
+  nav {
+    justify-self: end;
+  }
+  #logo {
+    justify-self: start;
+  }
+  ul {
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+
+    &li {
+      height: auto;
+    }
+
+    &li a {
+      text-decoration: none;
+    }
+  }
+</style>

@@ -1,0 +1,51 @@
+<style is:global>
+  :root {
+    --primary-color: hsl(249, 100%, 7%);
+    --secondary-color: hsl(342, 100%, 50%);
+    --text-color: hsl(342, 40%, 96%);
+  }
+
+  header,
+  footer,
+  #hero_section {
+    grid-column: 1 / -1;
+    padding-inline: clamp(1rem, -0.084rem + 4.819vw, 3rem);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  a,
+  p,
+  span {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    color: var(--text-color);
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 64px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 48px;
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 32px;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 400;
+  }
+</style>
