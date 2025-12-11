@@ -2,10 +2,10 @@
 import SearchBar from "./SearchBar.astro";
 ---
 
-<header>
+<header id="navHeader">
   <div id="logo">WEB DEV BLOG</div>
   <SearchBar />
-  <nav>
+  <nav id="desktopNav">
     <ul>
       <li><a href="#href">home</a></li>
       <li><a href="#href">posts</a></li>
@@ -13,8 +13,31 @@ import SearchBar from "./SearchBar.astro";
       <li><a href="#href">smth?</a></li>
     </ul>
   </nav>
+  <nav id="mobileNav">
+    <button id="menuButtonMobile">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="hsl(342, 100%, 50%)"
+          d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z"
+        ></path>
+      </svg>
+    </button>
+    <div id="mobileMenu" class="">
+      <SearchBar />
+      <ul>
+        <li><a href="#href">home</a></li>
+        <li><a href="#href">posts</a></li>
+        <li><a href="#href">contact</a></li>
+        <li><a href="#href">smth?</a></li>
+      </ul>
+    </div>
+  </nav>
 </header>
-
 <style>
   header {
     width: 100%;
@@ -23,15 +46,15 @@ import SearchBar from "./SearchBar.astro";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     place-items: center;
-
-    overflow: hidden;
   }
 
   nav {
     justify-self: end;
   }
   #logo {
+    height: 100%;
     justify-self: start;
+    align-self: center;
   }
   ul {
     list-style: none;
@@ -39,6 +62,8 @@ import SearchBar from "./SearchBar.astro";
     align-items: center;
     justify-content: flex-end;
     gap: 2rem;
+
+    flex-shrink: 1;
 
     &li {
       height: auto;
@@ -48,4 +73,109 @@ import SearchBar from "./SearchBar.astro";
       text-decoration: none;
     }
   }
+
+  button {
+    display: none;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  #mobileNav {
+    display: none;
+  }
+
+  #desktopNav {
+    display: block;
+  }
+
+  @media screen and (max-width: 1024px) {
+    #desktopNav ul {
+      display: none;
+    }
+    button {
+      display: block;
+      cursor: pointer;
+    }
+    #mobileNav {
+      display: block;
+      position: relative;
+    }
+    #desktopNav {
+      display: none;
+    }
+
+    #mobileMenu.showHide {
+      transform: translateX(0);
+    }
+    #mobileMenu {
+      position: absolute;
+      z-index: 2;
+      margin-top: 5rem;
+      top: 0;
+      right: 0;
+
+      background-color: var(--secondary-color);
+      border-radius: 10px;
+      padding: 1rem;
+      min-width: 20rem;
+      max-width: 20rem;
+      height: auto;
+      transform: translateX(
+        calc(100% + clamp(1rem, -0.084rem + 4.819vw, 3rem))
+      );
+      transition: transform 0.5s ease;
+      will-change: transform;
+      & ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        padding-left: 0.75rem;
+        & li {
+          width: 100%;
+          padding-block: 1rem;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    header {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 </style>
+
+<script>
+  const searchBars = document.querySelectorAll<HTMLDivElement>(".search_bar");
+  if (searchBars.length >= 2) {
+    const searchBarHeader = searchBars[0];
+    const searchBarMenu = searchBars[1];
+
+    const mediaQuery = window.matchMedia("(max-width:600px)");
+
+    const handleScreenChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        searchBarHeader.classList.add("hide");
+        searchBarMenu.classList.remove("hide");
+      } else {
+        searchBarHeader.classList.remove("hide");
+        searchBarMenu.classList.add("hide");
+      }
+    };
+    handleScreenChange(mediaQuery);
+    mediaQuery.addEventListener("change", handleScreenChange);
+  }
+
+  const button = document.querySelector(
+    "#menuButtonMobile",
+  ) as HTMLButtonElement;
+
+  const mobileMenu = document.querySelector("#mobileMenu") as HTMLDivElement;
+
+  if (button && mobileMenu) {
+    button.addEventListener("click", () =>
+      mobileMenu.classList.toggle("showHide"),
+    );
+  }
+</script>
